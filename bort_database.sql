@@ -16,7 +16,7 @@ CREATE TABLE Role (
 CREATE TABLE RoleGuideline (
     role_guideline_id SERIAL PRIMARY KEY,
     guideline_content TEXT,
-    created_at DATE,
+    created_at TIMESTAMP,
     role_id INT,
     FOREIGN KEY (role_id) REFERENCES Role(role_id)
 );
@@ -28,7 +28,7 @@ CREATE TABLE EmpUser (
     password VARCHAR(50),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    joined_date DATE,
+    joined_date TIMESTAMP,
     position VARCHAR(50),
     role_id INT,
     department_id INT,
@@ -54,7 +54,7 @@ CREATE TABLE PerformanceReview (
     performance_review_id SERIAL PRIMARY KEY,
     content TEXT,
     rating INT,
-    reviewed_at DATE,
+    reviewed_at TIMESTAMP,
     review_source VARCHAR(50),
     user_id INT,
     manager_id INT,
@@ -66,8 +66,8 @@ CREATE TABLE PerformanceReview (
 CREATE TABLE UserPrivilege (
     user_privilege_id SERIAL PRIMARY KEY,
     description VARCHAR(50),
-    start_date DATE,
-    end_date DATE,
+    start_date TIMESTAMP,
+    end_date TIMESTAMP,
     user_id INT,
     privilege_id INT,
     FOREIGN KEY (user_id) REFERENCES EmpUser(user_id),
