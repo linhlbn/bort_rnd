@@ -207,5 +207,57 @@ VALUES (4, 'Android Danh_Vo_Senior_Resume', '2023-12-07 19:34:47', 'https://stor
 	   (53, '(JUNIOR) APP _ WEB DESIGNER', '2023-12-07 19:37:37', 'https://storage.cloud.google.com/bort_storage/Web-App%20Designer%20(JD%20_%20CV)/JD/(JUNIOR)%20APP%20_%20WEB%20DESIGNER.docx?authuser=1', '003', '3'),
 	   (54, '(JUNIOR) APP _ WEB DESIGNER', '2023-12-07 19:37:37', 'https://storage.cloud.google.com/bort_storage/Web-App%20Designer%20(JD%20_%20CV)/JD/(JUNIOR)%20APP%20_%20WEB%20DESIGNER.pdf?authuser=1', '003', '3'),
 	   (55, '~$UNIOR) APP _ WEB DESIGNER.docx', '2023-12-07 19:37:37', 'https://storage.cloud.google.com/bort_storage/Web-App%20Designer%20(JD%20_%20CV)/JD/~%24UNIOR)%20APP%20_%20WEB%20DESIGNER.docx?authuser=1', '003', '3');
-	   
 
+ALTER TABLE EmpUser
+ADD COLUMN privilege_id INT;
+
+ALTER TABLE EmpUser
+ADD CONSTRAINT fk_empuser_privilege FOREIGN KEY (privilege_id) REFERENCES Privilege(privilege_id);
+
+UPDATE EmpUser
+SET privilege_id = 1
+WHERE user_id = 1;
+
+UPDATE EmpUser
+SET privilege_id = 1
+WHERE user_id = 2;
+
+UPDATE EmpUser
+SET privilege_id = 1
+WHERE user_id = 3;
+
+UPDATE EmpUser
+SET privilege_id = 1
+WHERE user_id = 4;
+
+UPDATE EmpUser
+SET privilege_id = 2
+WHERE user_id = 5;
+
+UPDATE EmpUser
+SET privilege_id = 1
+WHERE user_id = 6;
+
+UPDATE EmpUser
+SET privilege_id = 2
+WHERE user_id = 7;
+
+UPDATE EmpUser
+SET privilege_id = 3
+WHERE user_id = 8;
+
+UPDATE EmpUser
+SET privilege_id = 3
+WHERE user_id = 9;
+
+UPDATE EmpUser
+SET privilege_id = 3
+WHERE user_id = 10;
+
+UPDATE EmpUser
+SET privilege_id = 3
+WHERE user_id = 11;
+
+UPDATE EmpUser
+SET privilege_id = 3
+WHERE user_id = 12;
