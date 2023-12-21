@@ -1,19 +1,19 @@
 -- Table: Department 
-CREATE TABLE Department (
+CREATE TABLE if not exists Department (
     department_id SERIAL PRIMARY KEY,
     title VARCHAR(50),
     description TEXT
 );
 
 -- Table: Role
-CREATE TABLE Role (
+CREATE TABLE if not exists Role (
     role_id SERIAL PRIMARY KEY,
     title VARCHAR(50),
     description TEXT
 );
 
 -- Table: RoleGuideline
-CREATE TABLE RoleGuideline (
+CREATE TABLE if not exists RoleGuideline (
     role_guideline_id SERIAL PRIMARY KEY,
     guideline_content TEXT,
     created_at TIMESTAMP,
@@ -22,13 +22,13 @@ CREATE TABLE RoleGuideline (
 );
 
 -- Table: EmpUser
-CREATE TABLE EmpUser (
+CREATE TABLE if not exists EmpUser (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50),
     password VARCHAR(50),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    joined_date TIMESTAMP,
+    joined_TIMESTAMP TIMESTAMP,
     position VARCHAR(50),
     role_id INT,
     department_id INT,
@@ -37,20 +37,20 @@ CREATE TABLE EmpUser (
 );
 
 -- Table: Privilege
-CREATE TABLE Privilege (
+CREATE TABLE if not exists Privilege (
     privilege_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
     permission_level INT
 );
 
 -- Table: DocumentType
-CREATE TABLE DocumentType (
+CREATE TABLE if not exists DocumentType (
     doc_type_id SERIAL PRIMARY KEY,
     type_name VARCHAR(50)
 );
 
 -- Table: PerformanceReview
-CREATE TABLE PerformanceReview (
+CREATE TABLE if not exists PerformanceReview (
     performance_review_id SERIAL PRIMARY KEY,
     content TEXT,
     rating INT,
@@ -63,11 +63,11 @@ CREATE TABLE PerformanceReview (
 );
 
 -- Table: UserPrivilege
-CREATE TABLE UserPrivilege (
+CREATE TABLE if not exists UserPrivilege (
     user_privilege_id SERIAL PRIMARY KEY,
     description VARCHAR(50),
-    start_date TIMESTAMP,
-    end_date TIMESTAMP,
+    start_TIMESTAMP TIMESTAMP,
+    end_TIMESTAMP TIMESTAMP,
     user_id INT,
     privilege_id INT,
     FOREIGN KEY (user_id) REFERENCES EmpUser(user_id),
@@ -75,7 +75,7 @@ CREATE TABLE UserPrivilege (
 );
 
 -- Table: OnboardingPlanTemplate
-CREATE TABLE OnboardingPlanTemplate (
+CREATE TABLE if not exists OnboardingPlanTemplate (
     onboarding_plan_template_id SERIAL PRIMARY KEY,
     description TEXT,
     role_id INT,
@@ -85,17 +85,17 @@ CREATE TABLE OnboardingPlanTemplate (
 );
 
 -- Table: TaskTemplate
-CREATE TABLE TaskTemplate (
+CREATE TABLE if not exists TaskTemplate (
     task_template_id SERIAL PRIMARY KEY,
     title VARCHAR(200),
     description TEXT
 );
 
 -- Table: OnboardingPlanRecord
-CREATE TABLE OnboardingPlanRecord (
+CREATE TABLE if not exists OnboardingPlanRecord (
     onboarding_plan_id SERIAL PRIMARY KEY,
-    start_date DATE,
-    end_date DATE,
+    start_TIMESTAMP TIMESTAMP,
+    end_TIMESTAMP TIMESTAMP,
     status VARCHAR(100),
     current_task_id INT,
     user_id INT,
@@ -105,10 +105,10 @@ CREATE TABLE OnboardingPlanRecord (
 );
 
 -- Table: Document
-CREATE TABLE Document (
+CREATE TABLE if not exists Document (
     document_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    created_date DATE,
+    created_TIMESTAMP TIMESTAMP,
     storage_url VARCHAR(50),
     doc_type_id INT,
     privilege_id INT,
@@ -118,9 +118,9 @@ CREATE TABLE Document (
 );
 
 -- Table: TaskRecord
-CREATE TABLE TaskRecord (
+CREATE TABLE if not exists TaskRecord (
     task_id SERIAL PRIMARY KEY,
-    due_date DATE,
+    due_TIMESTAMP TIMESTAMP,
     status VARCHAR(50),
     sort_number INT,
     document_id INT,
@@ -132,27 +132,27 @@ CREATE TABLE TaskRecord (
 );
 
 -- Table: RequiredDocument
-CREATE TABLE RequiredDocument (
+CREATE TABLE if not exists RequiredDocument (
     required_document_id SERIAL PRIMARY KEY,
     title VARCHAR(50),
     description TEXT,
-    required_date DATE,
+    required_TIMESTAMP TIMESTAMP,
     task_id INT,
     FOREIGN KEY (task_id) REFERENCES TaskRecord(task_id)
 );
 
 -- Table: ChatbotMetric
-CREATE TABLE ChatbotMetric (
+CREATE TABLE if not exists ChatbotMetric (
     chatbot_metric_id SERIAL PRIMARY KEY,
     gb_answer_ratio VARCHAR(50),
     avg_processing_time VARCHAR(50),
     daily_avg_usage FLOAT,
-    created_at DATE,
-    updated_at DATE
+    created_at TIMESTAMP,
+    upTIMESTAMPd_at TIMESTAMP
 );
 
 -- Table: Chatbot
-CREATE TABLE Chatbot (
+CREATE TABLE if not exists Chatbot (
     chatbot_id SERIAL PRIMARY KEY,
     role VARCHAR(50),
     description VARCHAR(50),
@@ -161,10 +161,10 @@ CREATE TABLE Chatbot (
 );
 
 -- Table: Conversation
-CREATE TABLE Conversation (
+CREATE TABLE if not exists Conversation (
     conversation_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    created_at DATE,
+    created_at TIMESTAMP,
     user_id INT,
     chatbot_id INT,
     FOREIGN KEY (user_id) REFERENCES EmpUser(user_id),
@@ -172,36 +172,36 @@ CREATE TABLE Conversation (
 );
 
 -- Table: AiMessage
-CREATE TABLE AiMessage (
+CREATE TABLE if not exists AiMessage (
     ai_message_id SERIAL PRIMARY KEY,
     content TEXT,
-    created_at DATE,
+    created_at TIMESTAMP,
     conversation_id INT,
     FOREIGN KEY (conversation_id) REFERENCES Conversation(conversation_id)
 );
 
 -- Table: Rating
-CREATE TABLE Rating (
+CREATE TABLE if not exists Rating (
     rating_id SERIAL PRIMARY KEY,
     table_type VARCHAR(50),
-    created_at DATE,
+    created_at TIMESTAMP,
     ai_message_id INT,
     FOREIGN KEY (ai_message_id) REFERENCES AiMessage(ai_message_id)
 );
 
 -- Table: HumanMessage
-CREATE TABLE HumanMessage (
+CREATE TABLE if not exists HumanMessage (
     human_message_id SERIAL PRIMARY KEY,
     content TEXT,
-    created_at DATE,
+    created_at TIMESTAMP,
     conversation_id INT,
     FOREIGN KEY (conversation_id) REFERENCES Conversation(conversation_id)
 );
 
-CREATE TABLE Goal (
+CREATE TABLE if not exists Goal (
     goal_id SERIAL PRIMARY KEY, 
     content TEXT,
-    created_at DATE,
+    created_at TIMESTAMP,
     user_id int,
     FOREIGN KEY (user_id) REFERENCES EmpUser(user_id)
 );
