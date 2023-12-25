@@ -48,7 +48,7 @@ INSERT INTO EmpUser (user_id, username, password, first_name, last_name, joined_
 ('012', 'quan_nguyen', 'abc123@', 'Khac Anh Quan', 'Nguyen', '2023-12-01', 'Intern Developer', '012', '004');
 
 ALTER TABLE empuser
-ADD COLUMN signed_contract_date DATE;
+ADD COLUMN signed_contract_dateTIMESTAMP;
 
 UPDATE empuser
 SET signed_contract_date = '2023-09-13'

@@ -16,7 +16,7 @@ CREATE TABLE Role (
 CREATE TABLE RoleGuideline (
     role_guideline_id SERIAL PRIMARY KEY,
     guideline_content TEXT,
-    created_at DATE,
+    created_atTIMESTAMP,
     role_id INT,
     FOREIGN KEY (role_id) REFERENCES Role(role_id)
 );
@@ -28,7 +28,7 @@ CREATE TABLE EmpUser (
     password VARCHAR(50),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    joined_date DATE,
+    joined_dateTIMESTAMP,
     position VARCHAR(50),
     role_id INT,
     department_id INT,
@@ -54,7 +54,7 @@ CREATE TABLE PerformanceReview (
     performance_review_id SERIAL PRIMARY KEY,
     content TEXT,
     rating INT,
-    reviewed_at DATE,
+    reviewed_atTIMESTAMP,
     review_source VARCHAR(50),
     user_id INT,
     manager_id INT,
@@ -66,8 +66,8 @@ CREATE TABLE PerformanceReview (
 CREATE TABLE UserPrivilege (
     user_privilege_id SERIAL PRIMARY KEY,
     description VARCHAR(50),
-    start_date DATE,
-    end_date DATE,
+    start_dateTIMESTAMP,
+    end_dateTIMESTAMP,
     user_id INT,
     privilege_id INT,
     FOREIGN KEY (user_id) REFERENCES EmpUser(user_id),
@@ -94,8 +94,8 @@ CREATE TABLE TaskTemplate (
 -- Table: OnboardingPlanRecord
 CREATE TABLE OnboardingPlanRecord (
     onboarding_plan_id SERIAL PRIMARY KEY,
-    start_date DATE,
-    end_date DATE,
+    start_dateTIMESTAMP,
+    end_dateTIMESTAMP,
     status VARCHAR(100),
     current_task_id INT,
     user_id INT,
@@ -108,7 +108,7 @@ CREATE TABLE OnboardingPlanRecord (
 CREATE TABLE Document (
     document_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    created_date DATE,
+    created_dateTIMESTAMP,
     storage_url VARCHAR(50),
     doc_type_id INT,
     privilege_id INT,
@@ -120,7 +120,7 @@ CREATE TABLE Document (
 -- Table: TaskRecord
 CREATE TABLE TaskRecord (
     task_id SERIAL PRIMARY KEY,
-    due_date DATE,
+    due_dateTIMESTAMP,
     status VARCHAR(50),
     sort_number INT,
     document_id INT,
@@ -136,7 +136,7 @@ CREATE TABLE RequiredDocument (
     required_document_id SERIAL PRIMARY KEY,
     title VARCHAR(50),
     description TEXT,
-    required_date DATE,
+    required_dateTIMESTAMP,
     task_id INT,
     FOREIGN KEY (task_id) REFERENCES TaskRecord(task_id)
 );
@@ -147,8 +147,8 @@ CREATE TABLE ChatbotMetric (
     gb_answer_ratio VARCHAR(50),
     avg_processing_time VARCHAR(50),
     daily_avg_usage FLOAT,
-    created_at DATE,
-    updated_at DATE
+    created_atTIMESTAMP,
+    updated_atTIMESTAMP
 );
 
 -- Table: Chatbot
@@ -164,7 +164,7 @@ CREATE TABLE Chatbot (
 CREATE TABLE Conversation (
     conversation_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    created_at DATE,
+    created_atTIMESTAMP,
     user_id INT,
     chatbot_id INT,
     FOREIGN KEY (user_id) REFERENCES EmpUser(user_id),
@@ -175,7 +175,7 @@ CREATE TABLE Conversation (
 CREATE TABLE AiMessage (
     ai_message_id SERIAL PRIMARY KEY,
     content TEXT,
-    created_at DATE,
+    created_atTIMESTAMP,
     conversation_id INT,
     FOREIGN KEY (conversation_id) REFERENCES Conversation(conversation_id)
 );
@@ -184,7 +184,7 @@ CREATE TABLE AiMessage (
 CREATE TABLE Rating (
     rating_id SERIAL PRIMARY KEY,
     table_type VARCHAR(50),
-    created_at DATE,
+    created_atTIMESTAMP,
     ai_message_id INT,
     FOREIGN KEY (ai_message_id) REFERENCES AiMessage(ai_message_id)
 );
@@ -193,7 +193,7 @@ CREATE TABLE Rating (
 CREATE TABLE HumanMessage (
     human_message_id SERIAL PRIMARY KEY,
     content TEXT,
-    created_at DATE,
+    created_atTIMESTAMP,
     conversation_id INT,
     FOREIGN KEY (conversation_id) REFERENCES Conversation(conversation_id)
 );
@@ -201,7 +201,7 @@ CREATE TABLE HumanMessage (
 CREATE TABLE Goal (
     goal_id SERIAL PRIMARY KEY, 
     content TEXT,
-    created_at DATE,
+    created_atTIMESTAMP,
     user_id int,
     FOREIGN KEY (user_id) REFERENCES EmpUser(user_id)
 );
