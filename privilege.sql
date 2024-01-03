@@ -40,3 +40,5 @@ select * from Documenttype;
 select * from DocumentRoleAccess;
 
 -- document in detail about flow related to chatbot will be updated later
+
+-- specific for each project -> accessible roles should be updated at Documenttype
