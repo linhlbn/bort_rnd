@@ -22,9 +22,13 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 import pandas as pd
 import emoji
 from edt import CI, CO, CR, CP
+import json
 
+async def embedding_process(files_dict, CI, CR, CP, CO, chosen_categories, timer):
+    
+    count_filename = 'count.json'
+    count = await load_count(count_filename)
 
-async def embedding_process(files_dict, CI, CR, CP, CO, chosen_categories, timer, count):
     conn = await asyncpg.connect(
         host=os.getenv('DB_HOST'),
         database=os.getenv('DB_NAME'),
@@ -123,6 +127,7 @@ async def embedding_process(files_dict, CI, CR, CP, CO, chosen_categories, timer
                             if "rate_limit_exceeded" in str(e):
                                 print(f"Process terminated due to rate limit: {e}")
                                 count += 1
+                                await save_count(count_filename, count)
                                 print(f"\n the program RUN {count} TIME!")
                                 is_stop = True
                             else:
@@ -144,6 +149,17 @@ async def periodic_run(interval, async_func, *args):
     while True:
         await async_func(*args)
         await asyncio.sleep(interval)
+
+async def load_count(filename):
+    try:
+        with open(filename, 'r') as file:
+            return json.load(file).get('count', 0)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return 0
+
+async def save_count(filename, count):
+    with open(filename, 'w') as file:
+        json.dump({'count': count}, file)
 
 
 
@@ -248,8 +264,8 @@ if __name__ == "__main__":
         # asyncio.run(embedding_process(files_dict, CI, CR, CP, CO, chosen_categories, timer))
 
         interval = 50  # How often to rerun the embedding process
-        count = 0
-        asyncio.run(periodic_run(interval, embedding_process, files_dict, CI, CR, CP, CO, chosen_categories, timer, count))
+
+        asyncio.run(periodic_run(interval, embedding_process, files_dict, CI, CR, CP, CO, chosen_categories, timer))
         
         
 
