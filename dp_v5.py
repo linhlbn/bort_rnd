@@ -263,6 +263,12 @@ if __name__ == "__main__":
 
         # chosen_categories = ['CP'] # done
 
+        # chosen_categories = ['CR'] # done 
+
+
+        # uncomment for the updation next time (only new docs will be embedded)
+        # chosen_categories = ['CI', 'CR', 'CP', 'CO']
+
 
 
         chosen_categories = ['CR'] # 
