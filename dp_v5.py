@@ -269,10 +269,6 @@ if __name__ == "__main__":
         # uncomment for the updation next time (only new docs will be embedded)
         # chosen_categories = ['CI', 'CR', 'CP', 'CO']
 
-
-
-        chosen_categories = ['CR'] # 
-
         timer = 15
 
         # loop = asyncio.get_event_loop()
