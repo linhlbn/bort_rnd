@@ -22,4 +22,15 @@ The rest of 3 members are taking care of other position including AI, front-end,
 
 ## <a id='project-status'></a>III/ Project Status
 
-Processing 
+| Workload                                      | Status    | Continuous development    |
+|-----------------------------------------------|-----------| --------------------------|
+| 1. CloudSQL & Cloud storage configuration     | ✅        |                           |
+| 2. Init & update business DB - Queries        | ✅        | ✔️                        |
+| 3. Init & update vector DB - Queries          | ✅        | ✔️                        |
+| 4. Storage file management                    | ✅        |                          |
+| 5. Embedded & store vectorized data           | ✅        | ✔️                        |
+| 6. Pipeline Optimization                      | ✅        | ✔️                        |
+| 7. Update soon                                |           |                          |
+
+- ✅: Task completed
+- ✔️: Continuous development (Further improvements or updates are ongoing or anticipated)
