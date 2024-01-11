@@ -32,5 +32,7 @@ The rest of 3 members are taking care of other position including AI, front-end,
 | 6. Pipeline Optimization                      | ✅        | ✔️                        |
 | 7. Update soon                                |           |                          |
 
+privilege, role, etc...
+
 - ✅: Task completed
 - ✔️: Continuous development (Further improvements or updates are ongoing or anticipated)
