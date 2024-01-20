@@ -213,11 +213,15 @@ INSERT INTO Goal (content, created_at) values ('Complete Project A','2023-01-10'
 -- ALTER TABLE tasktemplate
 -- ADD COLUMN priority varchar(10);
 
+-- ALTER TABLE onboardingtaskplantemplate
+-- ADD COLUMN sort_number int;
+
 CREATE TABLE IF NOT EXISTS quiz (
     quiz_id SERIAL PRIMARY KEY, 
     question TEXT,
     correct_answer VARCHAR(100),
     answer_record TEXT[],
-    task_template_id INTEGER, -- Define the foreign key column
+    task_template_id INTEGER, 
     FOREIGN KEY (task_template_id) REFERENCES tasktemplate(task_template_id)
 );
+
