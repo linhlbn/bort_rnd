@@ -22,17 +22,17 @@ The rest of 3 members are taking care of other position including AI, front-end,
 
 ## <a id='project-status'></a>III/ Project Status
 
-| Workload                                      | Status    | Continuous development    |
+| Workload                                      | Status    | Continuous improvement    |
 |-----------------------------------------------|-----------| --------------------------|
 | 1. CloudSQL & Cloud storage configuration     | ✅        |                           |
-| 2. Init & update business DB - Queries        | ✅        | ✔️                        |
-| 3. Init & update vector DB - Queries          | ✅        | ✔️                        |
+| 2. Init & update business DB                  | ✅        | ✔️                        |
+| 3. Init & update vector DB                    | ✅        | ✔️                        |
 | 4. Storage file management                    | ✅        |                          |
 | 5. Embedded & store vectorized data           | ✅        | ✔️                        |
-| 6. Pipeline Optimization                      | ✅        | ✔️                        |
-| 7. Update soon                                |           |                          |
+| 6. RAG system Optimization                    | ✅        | ✔️                        |
+| 7. Onboarding data generation                 | ✅        |                          |
+| 8. Privilege for role                         | ✅        |                           |
 
-privilege, role, etc...
 
 - ✅: Task completed
 - ✔️: Continuous development (Further improvements or updates are ongoing or anticipated)

@@ -208,3 +208,7 @@ CREATE TABLE Goal (
 
 
 INSERT INTO Goal (content, created_at) values ('Complete Project A','2023-01-10')
+
+-- Table: update tasktemplate - one time runner:
+-- ALTER TABLE tasktemplate
+-- ADD COLUMN priority varchar(10);
