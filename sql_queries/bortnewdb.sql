@@ -218,6 +218,11 @@ INSERT INTO Goal (content, created_at) values ('Complete Project A','2023-01-10'
 -- ALTER TABLE onboardingtaskplantemplate
 -- ADD COLUMN sort_number int;
 
+-- ALTER TABLE onboardingtaskplantemplate
+-- ADD COLUMN process_id INTEGER,
+-- ADD CONSTRAINT fk_process
+-- FOREIGN KEY (process_id) REFERENCES process(process_id);
+
 CREATE TABLE IF NOT EXISTS quiz (
     quiz_id SERIAL PRIMARY KEY, 
     question TEXT,
@@ -225,16 +230,5 @@ CREATE TABLE IF NOT EXISTS quiz (
     answer_record TEXT[],
     task_template_id INTEGER, 
     FOREIGN KEY (task_template_id) REFERENCES tasktemplate(task_template_id)
-);
-
-CREATE TABLE IF NOT EXISTS TaskTemplatePriority (
-    Task_Template_Priority_id SERIAL PRIMARY KEY, 
-    sort_number int,
-    onboarding_plan_template_id int,
-	task_template_id int,
-	process_id int,
-    FOREIGN KEY (onboarding_plan_template_id) REFERENCES onboardingplantemplate(onboarding_plan_template_id),
-	FOREIGN KEY (task_template_id) REFERENCES tasktemplate(task_template_id),
-	FOREIGN KEY (process_id) REFERENCES process(process_id)
 );
 
