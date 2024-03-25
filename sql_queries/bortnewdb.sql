@@ -247,3 +247,15 @@ CREATE TABLE if not exists AdminFeedbackCriteria (
 	name VARCHAR(255),
 	description TEXT
 );
+
+
+INSERT INTO AdminFeedbackCriteria (name, description) 
+VALUES 
+    ('Improvement & Attitude', 'This criteria will be the evaluation for new employee based on how employees effort to success their tasks and their attitude to their works.'),
+    ('Quality of Work', 'This criteria will be the evaluation for new employee based on the completion tasks and the result of the completed tasks.'),
+    ('Team Work & Leadership', 'This criteria will be the evaluation for new employee based on the "Self-check" task type/teamwork task (Feedback survey 360).'),
+    ('Culture Fit & Potential Value', 'This criteria will be the evaluation for new employee based on their capability to work in a fast-paced, dynamic environment and core values contributing to company.'),
+    ('Adherence To Timelines', 'This criteria will be the evaluation for new employee based on their expectation to finish the task with high-quality work on-time, well-managed time & task during work');
+
+-- select * from AdminFeedbackCriteria;
+
