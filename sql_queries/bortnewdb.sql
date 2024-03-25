@@ -241,3 +241,9 @@ CREATE TABLE if not exists ComponentScores (
     FOREIGN KEY (User_Id) REFERENCES EmpUser(User_Id),
     FOREIGN KEY (Task_Type_Id) REFERENCES task_types(Task_Type_Id)
 );
+
+CREATE TABLE if not exists AdminFeedbackCriteria (
+	Admin_Feedback_Criteria_id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	description TEXT
+);
