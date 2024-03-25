@@ -232,8 +232,8 @@ CREATE TABLE IF NOT EXISTS quiz (
     FOREIGN KEY (task_template_id) REFERENCES tasktemplate(task_template_id)
 );
 
-CREATE TABLE if not exists ComponentScores (
-    Component_Score_Id SERIAL PRIMARY KEY,
+CREATE TABLE if not exists EmployeeComponentScores (
+    Employee_Component_Score_Id SERIAL PRIMARY KEY,
     User_Id INT,
     Task_Type_Id INT,
     User_Component_Score FLOAT,
@@ -257,5 +257,14 @@ VALUES
     ('Culture Fit & Potential Value', 'This criteria will be the evaluation for new employee based on their capability to work in a fast-paced, dynamic environment and core values contributing to company.'),
     ('Adherence To Timelines', 'This criteria will be the evaluation for new employee based on their expectation to finish the task with high-quality work on-time, well-managed time & task during work');
 
--- select * from AdminFeedbackCriteria;
-
+CREATE TABLE if not exists AdminFeedbackScores (
+    Admin_Feedback_Score_id SERIAL PRIMARY KEY,
+	Admin_role_id INT,
+	User_Id INT,
+    Admin_Feedback_Criteria_id INT,
+    Admin_Feedback_score FLOAT,
+    Updated_Date TIMESTAMP,
+    FOREIGN KEY (User_Id) REFERENCES EmpUser(User_Id),
+	FOREIGN KEY (Admin_role_id) REFERENCES role(role_id),
+    FOREIGN KEY (Admin_Feedback_Criteria_id) REFERENCES AdminFeedbackCriteria(Admin_Feedback_Criteria_id)
+);
