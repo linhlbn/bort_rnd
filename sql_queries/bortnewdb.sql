@@ -232,3 +232,12 @@ CREATE TABLE IF NOT EXISTS quiz (
     FOREIGN KEY (task_template_id) REFERENCES tasktemplate(task_template_id)
 );
 
+CREATE TABLE if not exists ComponentScores (
+    Component_Score_Id SERIAL PRIMARY KEY,
+    User_Id INT,
+    Task_Type_Id INT,
+    User_Component_Score INT,
+    Updated_Date TIMESTAMP,
+    FOREIGN KEY (User_Id) REFERENCES EmpUser(User_Id),
+    FOREIGN KEY (Task_Type_Id) REFERENCES task_types(Task_Type_Id)
+);
