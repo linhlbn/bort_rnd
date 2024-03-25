@@ -236,7 +236,7 @@ CREATE TABLE if not exists ComponentScores (
     Component_Score_Id SERIAL PRIMARY KEY,
     User_Id INT,
     Task_Type_Id INT,
-    User_Component_Score INT,
+    User_Component_Score FLOAT,
     Updated_Date TIMESTAMP,
     FOREIGN KEY (User_Id) REFERENCES EmpUser(User_Id),
     FOREIGN KEY (Task_Type_Id) REFERENCES task_types(Task_Type_Id)
