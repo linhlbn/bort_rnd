@@ -268,3 +268,11 @@ CREATE TABLE if not exists AdminFeedbackScores (
 	FOREIGN KEY (Admin_role_id) REFERENCES role(role_id),
     FOREIGN KEY (Admin_Feedback_Criteria_id) REFERENCES AdminFeedbackCriteria(Admin_Feedback_Criteria_id)
 );
+
+CREATE TABLE UserSessions (
+    Session_id SERIAL PRIMARY KEY,
+    User_id INT NOT NULL,
+    Session_start TIMESTAMP NOT NULL,
+    Session_end TIMESTAMP,
+    FOREIGN KEY (User_id) REFERENCES EmpUser(User_id) 
+);
