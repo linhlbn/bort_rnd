@@ -18,7 +18,7 @@ SELECT
   ROUND(
     
       (SELECT COUNT(*) FROM TaskRecord) -
-      (SELECT COUNT(*) FROM TaskRecord WHERE status='done')::numeric /
+      (SELECT COUNT(*) FROM TaskRecord WHERE status='done')::numeric 
 
   ) AS number_of_pending_task
 
