@@ -9,7 +9,7 @@ SELECT
 
 
 --- Task completed
-SELECT COUNT(*) FROM TaskRecord WHERE status='done')::numeric
+SELECT COUNT(*) FROM TaskRecord WHERE status='done'
 
 
 --- Pending task

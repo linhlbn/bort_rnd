@@ -6,7 +6,7 @@ SELECT
     AVG(afs.Admin_Feedback_score) AS average_feedback_score
 FROM
     AdminFeedbackScores afs
-JOIN "User" u
+JOIN EmpUser u
     ON afs.User_Id = u.User_id
 JOIN Department d
     ON u.department_id = d.department_id
@@ -17,6 +17,7 @@ ORDER BY
 
 
 --- Completed Tasks By department
+
 
 SELECT
     d.department_id,
@@ -29,7 +30,7 @@ FROM
     TaskRecord tr
 JOIN OnboardingPlanRecord op
     ON tr.onboarding_plan_id = op.onboarding_plan_id
-JOIN "User" u
+JOIN EmpUser u
     ON op.user_id = u.user_id
 JOIN Department d
     ON u.department_id = d.department_id
@@ -39,12 +40,14 @@ ORDER BY
     d.department_id;
 
 --- Top 5 potential employees
+
+
 WITH UserComponentSum AS (
     SELECT
         User_id,
         SUM(User_Component_Score) AS Total_User_Component_Score
     FROM
-        ComponentScores
+        EmployeeComponentScores
     GROUP BY
         User_id
 ),
